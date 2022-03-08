@@ -49,6 +49,6 @@ server.put('/data/restaurants/:restaurant_id', async (request, response)=>{
 
 //delete en restaurant
 server.delete('/data/restaurants/:restaurant_id', async (request, response)=>{
-  let result = await db.run("DELETE FROM restaurants WHERE restaurant_id = ?", [request.params.id])
+  let result = await db.run("DELETE FROM restaurants WHERE restaurant_id = ?", [request.params.restaurant_id])
   response.json(result)
 })
