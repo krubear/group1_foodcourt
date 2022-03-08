@@ -30,7 +30,7 @@ db.run = util.promisify(db.run)
 
 
 //allt som finns i restaurants
-server.get('/data/restaurants/:id', async (request, response)=>{
+server.get('/data/restaurants/:restaurant_id', async (request, response)=>{
   let result = await db.all("SELECT * FROM restaurants WHERE restaurant_id = ?", [request.params.id])
   response.json(result)
 })
@@ -42,7 +42,7 @@ server.post('/data/restaurants', async (request, response)=>{
 })
 
 //uppdatera en restaurang
-server.put('/data/restaurants/:id', async (request, response)=>{
+server.put('/data/restaurants/:restaurant_id', async (request, response)=>{
   let result = await db.run("UPDATE restaurants SET name = ?, resturant_adress = ?, type_of_cuisine = ? WHERE restaurant_id = ?", [request.body.name, request.body.resturant_adress, request.body.type_of_cuisine, request.params.restaurant_id])
   response.json(result)
 })
