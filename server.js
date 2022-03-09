@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const server = express()
 server.use(express.json())
@@ -8,6 +9,7 @@ server.use((request, response, next)=>{
 })
 
 const session = require('express-session')
+const { request } = require('http')
 server.use(session({
   secret: 'seoåkdhrifåwoeidfhåäwosdfn',
   resave: false,
@@ -27,3 +29,8 @@ const { resourceLimits } = require('worker_threads')
 const db = new sqlite3.Database('./database/G1foodcourt.db')
 db.all = util.promisify(db.all)
 db.run = util.promisify(db.run)
+
+
+
+
+
