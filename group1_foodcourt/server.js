@@ -52,3 +52,5 @@ server.delete('/group1_foodcourt/restaurants/:restaurant_id', async (request, re
   let result = await db.run("DELETE FROM restaurants WHERE restaurant_id = ?", [request.params.restaurant_id])
   response.json(result)
 })
+
+
