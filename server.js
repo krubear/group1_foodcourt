@@ -29,3 +29,34 @@ const { resourceLimits } = require('worker_threads')
 const db = new sqlite3.Database('./database/G1foodcourt.db')
 db.all = util.promisify(db.all)
 db.run = util.promisify(db.run)
+
+// customers
+
+server.get('/data/customers', async(request, response)=>{
+  let result = await db.all("SELECT * FROM customers")
+
+  response.json(result)
+})
+
+server.get('/data/customers/:customer_id', async(request, response)=>{
+  let result = await db.all("SELECT * FROM customers WHERE customer_id = ?", [request.params.customer_id])
+
+  response.json(result)
+})
+
+server.post('/data/customers', async(request, response)=>{
+  let result = await db.run("INSERT INTO customers (firstname, lastname, adress, phone) VALUES(?, ?, ?, ?)", [request.body.firstname, request.body.lastname, request.body.adress, request.body.phone])
+  response.json(result)
+})
+
+server.put('/data/customers/:customer_id', async(request, response)=>{
+
+  let result = await db.run("UPDATE customers SET firstname = ?, lastname = ?, adress = ?, phone = ? WHERE customer_id = ?", [request.body.firstname, request.body.lastname, request.body.adress, request.body.phone, request.params.customer_id])
+  response.json(result)
+})
+
+server.delete('/data/customers/:id', async(request, response)=>{
+
+  let result = await db.run("DELETE FROM customers WHERE id = ?", [request.params.id])
+  response.json(result)
+})
