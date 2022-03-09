@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.15",
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "group1_foodcourt",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krubear/group1_foodcourt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krubear/group1_foodcourt/issues"
+  },
+  "homepage": "https://github.com/krubear/group1_foodcourt#readme",
+  "description": ""
+}
