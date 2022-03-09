@@ -60,3 +60,10 @@ server.delete('/data/customers/:id', async(request, response)=>{
   let result = await db.run("DELETE FROM customers WHERE id = ?", [request.params.id])
   response.json(result)
 })
+
+// menus
+
+server.get('/data/menus', async(request, response)=>{
+  let result = await db.all("SELECT * FROM menus")
+  respone.json(result)
+})
