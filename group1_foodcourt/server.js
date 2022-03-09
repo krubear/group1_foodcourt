@@ -76,7 +76,17 @@ server.put('/data/menu_items/:menu_item_id',async(request,response) =>{
   let result = await db.run("UPDATE menu_items SET name = ?, price = ? WHERE menu_item_id = ?", [request.body.name, request.body.price, request.params.menu_item_id]) 
 
  
-  response.json({"result":"Menu_list updated"})
+  response.json({result, message:"Menuitem updated"})
 
 })
+
+
+server.delete('/data/menu_items/:menu_item_id',async(request,response) =>{ 
+    
+
+  let result = await db.run("DELETE FROM menu_items WHERE menu_item_id =?", [request.params.menu_item_id]) 
+
+  response.json({result, message:"Menuitem deleted"})
+})
+
 
