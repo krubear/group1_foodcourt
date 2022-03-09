@@ -29,8 +29,3 @@ const { resourceLimits } = require('worker_threads')
 const db = new sqlite3.Database('./database/G1foodcourt.db')
 db.all = util.promisify(db.all)
 db.run = util.promisify(db.run)
-
-
-
-
-
