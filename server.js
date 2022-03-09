@@ -108,3 +108,5 @@ server.delete('/data/customers/:id', async(request, response)=>{
   let result = await db.run("DELETE FROM customers WHERE id = ?", [request.params.id])
   response.json(result)
 })
+
+//end
