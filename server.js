@@ -28,27 +28,3 @@ const db = new sqlite3.Database('./database/G1foodcourt.db')
 db.all = util.promisify(db.all)
 db.run = util.promisify(db.run)
 
-
-//allt som finns i restaurants
-server.get('/group1_foodcourt/restaurants', async (request, response)=>{
-  let result = await db.all("SELECT * FROM restaurants WHERE restaurant_id = ?", [request.params.id])
-  response.json(result)
-})
-
-//skapa en ny restaurang
-server.post('/group1_foodcourt/restaurants/crate', async (request, response)=>{
-  let result = await db.run("INSERT INTO restaurants (restaurant_id, name, resturant_adress, type_of_cuisine) VALUES(?) ", [request.body.name])
-  response.json(result)
-})
-
-//uppdatera en restaurang
-server.put('/group1_foodcourt/restaurants/:restaurant_id', async (request, response)=>{
-  let result = await db.run("UPDATE restaurants SET name = ?, resturant_adress = ?, type_of_cuisine = ? WHERE restaurant_id = ?", [request.body.name, request.body.resturant_adress, request.body.type_of_cuisine, request.params.restaurant_id])
-  response.json(result)
-})
-
-//delete en restaurant
-server.delete('/group1_foodcourt/restaurants/:restaurant_id', async (request, response)=>{
-  let result = await db.run("DELETE FROM restaurants WHERE restaurant_id = ?", [request.params.restaurant_id])
-  response.json(result)
-})
