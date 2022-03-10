@@ -109,4 +109,15 @@ server.delete('/data/customers/:id', async(request, response)=>{
   response.json(result)
 })
 
+
+
+//get menu_items 
+
+server.get('/data/menu_items/',async(request,response) =>{  
+
+  let result = await db.all("SELECT * FROM menu_items")
+  response.json(result)
+  
+
+})
 //end
